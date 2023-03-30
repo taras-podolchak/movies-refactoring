@@ -11,7 +11,7 @@ public class NewReleaseMovie extends Movie {
 
     @Override
     public double getCharge(int daysRented) {
-        return daysRented * NewReleaseMovie.CHARGE;
+        return NewReleaseMovie.CHARGE;
     }
 
     @Override

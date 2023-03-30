@@ -25,12 +25,8 @@ public class Customer {
 	}
 
 	public String statement() {
-		//sin crear Iterator<Rental>, recorremos directamente el "List<Rental> rentals"
 		String result = rentals.stream()
-				//recorremos cada objeto Rental
 				.map(rental -> "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n")
-				//y usamos Collectors.joining()
-				// este método devuelve un Collector que concatena los elementos de entrada en una sola string.
 				.collect(Collectors.joining());
 		result = "Rental Record for " + this.getName() + "\n" + result;
 		result += "Amount owed is " + this.getTotalCharge() + "\n";

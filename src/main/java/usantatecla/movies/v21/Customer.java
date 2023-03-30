@@ -3,6 +3,7 @@ package usantatecla.movies.v21;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Customer {
 
@@ -24,12 +25,14 @@ public class Customer {
 	}
 
 	public String statement() {
-		Iterator<Rental> rentals = this.rentals.iterator();
-		String result = "Rental Record for " + this.getName() + "\n";
-		while (rentals.hasNext()) {
-			Rental each = rentals.next();
-			result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge() + "\n";
-		}
+		//sin crear Iterator<Rental>, recorremos directamente el "List<Rental> rentals"
+		String result = rentals.stream()
+				//recorremos cada objeto Rental
+				.map(rental -> "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n")
+				//y usamos Collectors.joining()
+				// este método devuelve un Collector que concatena los elementos de entrada en una sola string.
+				.collect(Collectors.joining());
+		result = "Rental Record for " + this.getName() + "\n" + result;
 		result += "Amount owed is " + this.getTotalCharge() + "\n";
 		result += "You earned " + this.getTotalFrequentRenterPoints() + " frequent renter points";
 		return result;

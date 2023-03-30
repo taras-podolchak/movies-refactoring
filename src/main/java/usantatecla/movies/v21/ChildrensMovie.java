@@ -5,6 +5,7 @@ public class ChildrensMovie extends Movie {
 	private static final double CHARGE = 1.5;
 	private static final double EXTRA_CHARGE = 1.5;
 	private static final int DAYS_RENTED_THRESHOLD = 3;
+	private static final int ONE_RENTED_DAY = 1;
 
 	public ChildrensMovie(String title) {
 		super(title);
@@ -12,10 +13,10 @@ public class ChildrensMovie extends Movie {
 
 	@Override
 	public double getCharge(int daysRented) {
-		double result = ChildrensMovie.CHARGE;
-		if (daysRented > ChildrensMovie.DAYS_RENTED_THRESHOLD) {
-			result += (daysRented - 1) * ChildrensMovie.EXTRA_CHARGE;
+		double charge = CHARGE;
+		if (daysRented > DAYS_RENTED_THRESHOLD) {
+			charge += (daysRented - ONE_RENTED_DAY) * EXTRA_CHARGE;
 		}
-		return result;
+		return charge;
 	}
 }

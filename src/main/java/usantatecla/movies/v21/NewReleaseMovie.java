@@ -11,11 +11,11 @@ public class NewReleaseMovie extends Movie {
 
     @Override
     public double getCharge(int daysRented) {
-        return NewReleaseMovie.CHARGE;
+        return CHARGE;
     }
 
     @Override
     public int getFrequentRenterPoints(int daysRented) {
-        return (daysRented > NewReleaseMovie.DAYS_RENTED_THRESHOLD) ? NewReleaseMovie.FREQUENT_RENTER_POINTS : NewReleaseMovie.DAYS_RENTED_THRESHOLD;
+        return (daysRented > DAYS_RENTED_THRESHOLD) ? FREQUENT_RENTER_POINTS : super.getFrequentRenterPoints(daysRented);
     }
 }

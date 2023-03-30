@@ -12,10 +12,10 @@ public class RegularMovie extends Movie {
 
 	@Override
 	public double getCharge(int daysRented) {
-		double result = RegularMovie.CHARGE;
-		if (daysRented > RegularMovie.DAYS_RENTED_THRESHOLD) {
-			result += (daysRented - RegularMovie.DAYS_RENTED_THRESHOLD) * RegularMovie.EXTRA_CHARGE;
+		double charge = CHARGE;
+		if (daysRented > DAYS_RENTED_THRESHOLD) {
+			charge += (daysRented - DAYS_RENTED_THRESHOLD) * EXTRA_CHARGE;
 		}
-		return result;
+		return charge;
 	}
 }

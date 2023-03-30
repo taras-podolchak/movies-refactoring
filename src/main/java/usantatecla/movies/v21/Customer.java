@@ -26,7 +26,7 @@ public class Customer {
 
 	public String statement() {
 		String result = rentals.stream()
-				.map(rental -> "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n")
+				.map(rental -> "\t" + rental.getMovieTitle() + "\t" + rental.getCharge() + "\n")
 				.collect(Collectors.joining());
 		result = "Rental Record for " + this.getName() + "\n" + result;
 		result += "Amount owed is " + this.getTotalCharge() + "\n";

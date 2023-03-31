@@ -187,4 +187,69 @@ public class CustomerTest {
         assertEquals(result, customerName);
     }
 
+    @Test
+    public void getTotalFrequentRenterPointsRegularSeveralDaysTest() {
+        Customer customer1Day = getCustomerWithRegularRental(1);
+        int result1Day = customer1Day.getTotalFrequentRenterPoints();
+        assertEquals(1, result1Day);
+
+        Customer customer2Day = getCustomerWithRegularRental(2);
+        int result2Day = customer2Day.getTotalFrequentRenterPoints();
+        assertEquals(1, result2Day);
+
+        Customer customer3Day = getCustomerWithRegularRental(3);
+        int result3Day = customer3Day.getTotalFrequentRenterPoints();
+        assertEquals(1, result3Day);
+    }
+
+    private Customer getCustomerWithRegularRental(int days) {
+        String movieName = "movieName";
+        Movie regularMovie = new MovieBuilder().title(movieName).regular().build();
+        Rental rental = new RentalBuilder().movie(regularMovie).daysRented(days).build();
+        return new CustomerBuilder().rental(rental).build();
+    }
+
+    @Test
+    public void getTotalFrequentRenterPointsNewReleasesSeveralDaysTest() {
+        Customer customer1Day = getCustomerWithNewReleaseRental(1);
+        int result1Day = customer1Day.getTotalFrequentRenterPoints();
+        assertEquals(1, result1Day);
+
+        Customer customer2Day = getCustomerWithNewReleaseRental(2);
+        int result2Day = customer2Day.getTotalFrequentRenterPoints();
+        assertEquals(2, result2Day);
+
+        Customer customer3Day = getCustomerWithNewReleaseRental(3);
+        int result3Day = customer3Day.getTotalFrequentRenterPoints();
+        assertEquals(2, result3Day);
+    }
+    private Customer getCustomerWithNewReleaseRental(int days) {
+        String movieName = "movieName";
+        Movie newRelease = new MovieBuilder().title(movieName).newRelease().build();
+        Rental rental = new RentalBuilder().movie(newRelease).daysRented(days).build();
+        return new CustomerBuilder().rental(rental).build();
+    }
+
+    @Test
+    public void getTotalFrequentRenterPointsChildrensRentalSeveralDaysTest() {
+        Customer customer1Day = getCustomerWithChildrensRental(1);
+        int result1Day = customer1Day.getTotalFrequentRenterPoints();
+        assertEquals(1, result1Day);
+
+        Customer customer2Day = getCustomerWithChildrensRental(2);
+        int result2Day = customer2Day.getTotalFrequentRenterPoints();
+        assertEquals(1, result2Day);
+
+        Customer customer4Day = getCustomerWithChildrensRental(4);
+        int result4Day = customer4Day.getTotalFrequentRenterPoints();
+        assertEquals(1, result4Day);
+    }
+    private Customer getCustomerWithChildrensRental(int days) {
+        String movieName = "movieName";
+        Movie newRelease = new MovieBuilder().title(movieName).childrens().build();
+        Rental rental = new RentalBuilder().movie(newRelease).daysRented(days).build();
+        return new CustomerBuilder().rental(rental).build();
+    }
+
+
 }

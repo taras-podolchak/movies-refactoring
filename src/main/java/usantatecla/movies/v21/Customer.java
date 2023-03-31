@@ -39,8 +39,8 @@ public class Customer {
 				.mapToDouble(Rental::getCharge)
 				.sum();
 	}
-	
-	private int getTotalFrequentRenterPoints() {
+
+	protected int getTotalFrequentRenterPoints() {
 		return rentals.stream()
 				.mapToInt(Rental::getFrequentRenterPoints)
 				.sum();

@@ -18,14 +18,6 @@ public class Rental {
 	public int getFrequentRenterPoints() {
 		return movie.getFrequentRenterPoints(daysRented);
 	}
-	
-	public int getDaysRented() {
-		return daysRented;
-	}
-	
-	public Movie getMovie() {
-		return movie;
-	}
 
 	public String getMovieTitle() {
 		return movie.getTitle();

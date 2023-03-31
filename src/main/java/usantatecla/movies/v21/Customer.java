@@ -34,7 +34,7 @@ public class Customer {
 		return result;
 	}
 
-	private double getTotalCharge() {
+	protected double getTotalCharge() {
 		return rentals.stream()
 				.mapToDouble(Rental::getCharge)
 				.sum();

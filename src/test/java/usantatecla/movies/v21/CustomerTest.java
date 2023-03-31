@@ -250,6 +250,50 @@ public class CustomerTest {
         Rental rental = new RentalBuilder().movie(newRelease).daysRented(days).build();
         return new CustomerBuilder().rental(rental).build();
     }
+    @Test
+    public void getTotalChargeRegularRentalSeveralDaysTest() {
+        Customer customer1Day = getCustomerWithRegularRental(1);
+        double result1Day = customer1Day.getTotalCharge();
+        assertEquals(result1Day, 2, 0);
 
+        Customer customer2Day = getCustomerWithRegularRental(2);
+        double result2Day = customer2Day.getTotalCharge();
+        assertEquals(result2Day, 2, 0);
+
+        Customer customer3Day = getCustomerWithRegularRental(3);
+        double result3Day = customer3Day.getTotalCharge();
+        assertEquals(result3Day, 3.5, 0);
+    }
+
+    @Test
+    public void getTotalChargeNewReleaseRentalSeveralDaysTest() {
+        Customer customer1Day = getCustomerWithNewReleaseRental(1);
+        double result1Day = customer1Day.getTotalCharge();
+        assertEquals(result1Day, 3, 0);
+
+        Customer customer2Day = getCustomerWithNewReleaseRental(2);
+        double result2Day = customer2Day.getTotalCharge();
+        assertEquals(result2Day, 3, 0);
+
+        Customer customer3Day = getCustomerWithNewReleaseRental(3);
+        double result3Day = customer3Day.getTotalCharge();
+        assertEquals(result3Day, 3, 0);
+    }
+
+
+    @Test
+    public void getTotalChargeChildrensRentalSeveralDaysTest() {
+        Customer customer1Day = getCustomerWithChildrensRental(1);
+        double result1Day = customer1Day.getTotalCharge();
+        assertEquals(result1Day, 1.5, 0);
+
+        Customer customer2Day = getCustomerWithChildrensRental(2);
+        double result2Day = customer2Day.getTotalCharge();
+        assertEquals(result2Day, 1.5, 0);
+
+        Customer customer4Day = getCustomerWithChildrensRental(4);
+        double result4Day = customer4Day.getTotalCharge();
+        assertEquals(result4Day, 6, 0);
+    }
 
 }

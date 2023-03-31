@@ -296,4 +296,15 @@ public class CustomerTest {
         assertEquals(result4Day, 6, 0);
     }
 
+    @Test
+    public void statementTest() {
+        Customer customer1Day = getCustomerWithRegularRental(1);
+        double result1Day = customer1Day.getTotalCharge();
+        assertEquals(result1Day, 2, 0);
+
+        String statement = customer1Day.statement();
+        String result = new StatementBuilder().movie("movieName", 2)
+                .totalAmount(2).frequentRenterPoints(1).build();
+        assertEquals(result, statement);
+    }
 }
